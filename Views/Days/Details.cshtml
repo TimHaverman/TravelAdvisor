@@ -1,0 +1,76 @@
+﻿@model TravelAdvisor.Models.Day
+
+@{
+    ViewBag.Title = "Details";
+}
+<section id="main" class="wrapper">
+    <div class="container">
+
+        <h4>Day Details For @Html.DisplayFor(model => model.DayNumber)</h4>
+
+
+
+        <hr />
+        <table class="alt">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Description)</th>
+                <th>@Html.DisplayNameFor(model => model.DayNumber)</th>
+                <th>@Html.LabelFor(model => model.Trip.Name,"Trip Name")</th>
+            </tr>
+            <tr>
+                <td>@Html.DisplayFor(model => model.Name)</td>
+                <td>@Html.DisplayFor(model => model.Description)</td>
+                <td>@Html.DisplayFor(model => model.DayNumber)</td>
+                <td>@Html.DisplayFor(model => model.Trip.Name)</td>
+            </tr>
+
+
+
+        </table>
+        <div class="box-alt">
+            <div class="row 50% uniform">
+                <div class="4u">
+                    <div class="image fit caption">
+                        <img src="@ViewBag.chartDayTotal" />
+                        <h6>Daily Breakdown</h6>
+                    </div>
+                </div>
+                <div class="4u">
+                    <div class="image fit caption">
+                        <img class="apiChartTotal" src="@ViewBag.chartDayDoughnut" />
+                        <h6>Daily Breakdown</h6>
+                    </div>
+                </div>
+                <div class="4u$">
+                    <div class="image fit caption">
+                        <img class="apiChart" src="@ViewBag.chartDayPolarArea" />
+                        <h6>Daily Breakdown</h6>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="foodContain">
+                @Html.Action("Index", "FoodOrders", new { dayid = Model.Id, id = Model.TripID, asPartial = true })
+            </div>
+            <div class="HotelContain">
+                @Html.Action("Index", "Accommodations", new { dayid = Model.Id, id = Model.TripID, asPartial = true })
+            </div>
+            <div class="TravelContain">
+                @Html.Action("Index", "Transportations", new { dayid = Model.Id, id = Model.TripID, asPartial = true })
+            </div>
+            <div class="OtherContain">
+                @Html.Action("Index", "Other", new { dayid = Model.Id, id = Model.TripID, asPartial = true })
+            </div>
+
+        </div>
+
+        <div class="button alt small" style="padding: 0 2.2em; padding-top: 0px; padding-right: 2.2em; padding-bottom: 0px;padding-left: 2.2em;">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+        </div>
+        <div class="button alt small" style="padding: 0 2.2em; padding-top: 0px; padding-right: 2.2em; padding-bottom: 0px;padding-left: 2.2em;">
+            @Html.ActionLink("Back to List", "Details", "Trips", new { id = Model.TripID }, null)
+        </div>
+    </div>
+</section>

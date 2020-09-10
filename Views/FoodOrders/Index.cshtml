@@ -1,0 +1,56 @@
+﻿@model IEnumerable<TravelAdvisor.Models.FoodOrder>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div class="container">
+                <h3>Food Index</h3>
+            <table class="alt">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CompletedDateTime)
+                    </th>
+                    <th>
+                        Amount
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Day)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CompletedDateTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Total)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Day "+ item.Day.DayNumber, "Details", "Days", new { id = item.DayId }, null)
+                        </td>
+                        <td>
+                            <ul class="actions">
+                                <li class="button alt small" style="padding: 0 2.2em; padding-top: 0px; padding-right: 3.2em; padding-bottom: 0px;padding-left: 3.2em;">@Html.ActionLink("Edit", "Edit", new { id = item.Id })</li>
+                            </ul>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+    </div>

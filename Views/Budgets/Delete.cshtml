@@ -1,0 +1,60 @@
+﻿@model TravelAdvisor.Models.Budget
+
+@{
+    ViewBag.Title = "Delete";
+}
+<section id="main" class="wrapper">
+    <div class="container">
+
+
+
+        <div>
+
+            <h2>Budget</h2>
+            <hr />
+            <div>
+
+            </div>
+            <h4>Delete Department @Html.DisplayFor(model => model.Department.Name) from @Html.DisplayFor(model => model.Trip.Name)</h4>
+            <h4>Are you sure you want to delete this?</h4>
+            <table class="alt">
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Amount)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.LabelFor(model => model.Trip.Name, "Trip Name")
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Trip.Name)
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.LabelFor(model => model.Department.Name, "Department Name")
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.Department.Name)
+                    </td>
+                </tr>
+            </table>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" />
+                </div>
+                <div class="button alt small" style="padding: 0 2.2em; padding-top: 0px; padding-right: 2.2em; padding-bottom: 0px;padding-left: 2.2em;">
+                    @Html.ActionLink("Back to List", "Details", "Trips", new { id = Model.TripId }, null)
+                </div>
+            }
+        </div>
+    </div>
+</section>

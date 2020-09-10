@@ -1,0 +1,75 @@
+﻿@model TravelAdvisor.Models.Trip
+
+@{
+    ViewBag.Title = "Delete";
+}
+    <div class="container">
+        
+
+
+
+        <h4>Delete Trip</h4>
+        <hr />
+        <dl class="form-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TypeOfTrip)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TypeOfTrip)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CompletedDateTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CompletedDateTime)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Suggested)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Suggested)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Customer.First_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Customer.First_Name)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <h3>Are you sure you want to delete this?</h3>
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" />
+            </div>
+        }
+        <div class="button alt">
+            @Html.ActionLink("Back to List", "Index", new { @class = "btn btn-alt" })
+        </div>
+    </div>

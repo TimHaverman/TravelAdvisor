@@ -1,0 +1,548 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TravelAdvisorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Accommodation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="BudgetId" Type="int" />
+    <Property Name="DayId" Type="int" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Budget">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DeparmentID" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="TripId" Type="int" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustId" />
+    </Key>
+    <Property Name="CustId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="First Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+    <Property Name="Gender" Type="bit" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="StreetAddress" Type="varchar" MaxLength="500" />
+    <Property Name="State" Type="varchar" MaxLength="50" />
+    <Property Name="Zipcode" Type="varchar" MaxLength="20" />
+    <Property Name="UserName" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Day">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="TripID" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="DayNumber" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="FoodOrder">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CompletedDateTime" Type="datetime" />
+    <Property Name="Total" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="BudgetId" Type="int" />
+    <Property Name="NumberAdults" Type="smallint" />
+    <Property Name="NumberChildren" Type="smallint" />
+    <Property Name="TripId" Type="int" />
+    <Property Name="DayId" Type="int" />
+  </EntityType>
+  <EntityType Name="FoodOrderLineItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FoodOrder" Type="int" Nullable="false" />
+    <Property Name="Ammount" Type="decimal" Precision="9" Scale="2" />
+  </EntityType>
+  <EntityType Name="Other">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="BudgetId" Type="int" />
+    <Property Name="DayId" Type="int" />
+  </EntityType>
+  <EntityType Name="SuggestedTrips">
+    <Key>
+      <PropertyRef Name="CustId" />
+      <PropertyRef Name="TripId" />
+    </Key>
+    <Property Name="CustId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="TripId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Transportation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BudgetId" Type="int" />
+    <Property Name="Amount" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="DayId" Type="int" />
+  </EntityType>
+  <EntityType Name="Trip">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="TypeOfTrip" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CompletedDateTime" Type="datetime" />
+    <Property Name="Suggested" Type="bit" />
+  </EntityType>
+  <Association Name="FK__Accommoda__Budge__4F7CD00D">
+    <End Role="Budget" Type="Self.Budget" Multiplicity="0..1" />
+    <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Budget">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Accommodation">
+        <PropertyRef Name="BudgetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Accommoda__DayId__5812160E">
+    <End Role="Day" Type="Self.Day" Multiplicity="0..1" />
+    <End Role="Accommodation" Type="Self.Accommodation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Day">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Accommodation">
+        <PropertyRef Name="DayId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Budget__Deparmen__3F466844">
+    <End Role="Department" Type="Self.Department" Multiplicity="1" />
+    <End Role="Budget" Type="Self.Budget" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Budget">
+        <PropertyRef Name="DeparmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Customer__CustId__35BCFE0A">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="CustId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Day__TripID__3C69FB99">
+    <End Role="Trip" Type="Self.Trip" Multiplicity="1" />
+    <End Role="Day" Type="Self.Day" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trip">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Day">
+        <PropertyRef Name="TripID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FoodOrder__Budge__46E78A0C">
+    <End Role="Budget" Type="Self.Budget" Multiplicity="0..1" />
+    <End Role="FoodOrder" Type="Self.FoodOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Budget">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FoodOrder">
+        <PropertyRef Name="BudgetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FoodOrder__DayId__5629CD9C">
+    <End Role="Day" Type="Self.Day" Multiplicity="0..1" />
+    <End Role="FoodOrder" Type="Self.FoodOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Day">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FoodOrder">
+        <PropertyRef Name="DayId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FoodOrder__FoodO__49C3F6B7">
+    <End Role="FoodOrder" Type="Self.FoodOrder" Multiplicity="1" />
+    <End Role="FoodOrderLineItem" Type="Self.FoodOrderLineItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FoodOrder">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FoodOrderLineItem">
+        <PropertyRef Name="FoodOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FoodOrder__TripI__5441852A">
+    <End Role="Trip" Type="Self.Trip" Multiplicity="0..1" />
+    <End Role="FoodOrder" Type="Self.FoodOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trip">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FoodOrder">
+        <PropertyRef Name="TripId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Other__BudgetId__52593CB8">
+    <End Role="Budget" Type="Self.Budget" Multiplicity="0..1" />
+    <End Role="Other" Type="Self.Other" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Budget">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Other">
+        <PropertyRef Name="BudgetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Other__DayId__59063A47">
+    <End Role="Day" Type="Self.Day" Multiplicity="0..1" />
+    <End Role="Other" Type="Self.Other" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Day">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Other">
+        <PropertyRef Name="DayId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Suggested__CustI__4316F928">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="SuggestedTrips" Type="Self.SuggestedTrips" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustId" />
+      </Principal>
+      <Dependent Role="SuggestedTrips">
+        <PropertyRef Name="CustId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Suggested__TripI__440B1D61">
+    <End Role="Trip" Type="Self.Trip" Multiplicity="1" />
+    <End Role="SuggestedTrips" Type="Self.SuggestedTrips" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trip">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SuggestedTrips">
+        <PropertyRef Name="TripId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transport__Budge__4CA06362">
+    <End Role="Budget" Type="Self.Budget" Multiplicity="0..1" />
+    <End Role="Transportation" Type="Self.Transportation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Budget">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transportation">
+        <PropertyRef Name="BudgetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Transport__DayId__571DF1D5">
+    <End Role="Day" Type="Self.Day" Multiplicity="0..1" />
+    <End Role="Transportation" Type="Self.Transportation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Day">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transportation">
+        <PropertyRef Name="DayId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Trip__CustId__38996AB5">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="Trip" Type="Self.Trip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustId" />
+      </Principal>
+      <Dependent Role="Trip">
+        <PropertyRef Name="CustId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Budget_TripId_Trip">
+    <End Role="Trip" Type="Self.Trip" Multiplicity="0..1" />
+    <End Role="Budget" Type="Self.Budget" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trip">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Budget">
+        <PropertyRef Name="TripId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TravelAdvisorModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Accommodation" EntityType="Self.Accommodation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Budget" EntityType="Self.Budget" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Day" EntityType="Self.Day" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FoodOrder" EntityType="Self.FoodOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FoodOrderLineItem" EntityType="Self.FoodOrderLineItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Other" EntityType="Self.Other" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SuggestedTrips" EntityType="Self.SuggestedTrips" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transportation" EntityType="Self.Transportation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trip" EntityType="Self.Trip" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Accommoda__Budge__4F7CD00D" Association="Self.FK__Accommoda__Budge__4F7CD00D">
+      <End Role="Budget" EntitySet="Budget" />
+      <End Role="Accommodation" EntitySet="Accommodation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Accommoda__DayId__5812160E" Association="Self.FK__Accommoda__DayId__5812160E">
+      <End Role="Day" EntitySet="Day" />
+      <End Role="Accommodation" EntitySet="Accommodation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Budget__Deparmen__3F466844" Association="Self.FK__Budget__Deparmen__3F466844">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Budget" EntitySet="Budget" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Customer__CustId__35BCFE0A" Association="Self.FK__Customer__CustId__35BCFE0A">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Day__TripID__3C69FB99" Association="Self.FK__Day__TripID__3C69FB99">
+      <End Role="Trip" EntitySet="Trip" />
+      <End Role="Day" EntitySet="Day" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FoodOrder__Budge__46E78A0C" Association="Self.FK__FoodOrder__Budge__46E78A0C">
+      <End Role="Budget" EntitySet="Budget" />
+      <End Role="FoodOrder" EntitySet="FoodOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FoodOrder__DayId__5629CD9C" Association="Self.FK__FoodOrder__DayId__5629CD9C">
+      <End Role="Day" EntitySet="Day" />
+      <End Role="FoodOrder" EntitySet="FoodOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FoodOrder__FoodO__49C3F6B7" Association="Self.FK__FoodOrder__FoodO__49C3F6B7">
+      <End Role="FoodOrder" EntitySet="FoodOrder" />
+      <End Role="FoodOrderLineItem" EntitySet="FoodOrderLineItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FoodOrder__TripI__5441852A" Association="Self.FK__FoodOrder__TripI__5441852A">
+      <End Role="Trip" EntitySet="Trip" />
+      <End Role="FoodOrder" EntitySet="FoodOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Other__BudgetId__52593CB8" Association="Self.FK__Other__BudgetId__52593CB8">
+      <End Role="Budget" EntitySet="Budget" />
+      <End Role="Other" EntitySet="Other" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Other__DayId__59063A47" Association="Self.FK__Other__DayId__59063A47">
+      <End Role="Day" EntitySet="Day" />
+      <End Role="Other" EntitySet="Other" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Suggested__CustI__4316F928" Association="Self.FK__Suggested__CustI__4316F928">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="SuggestedTrips" EntitySet="SuggestedTrips" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Suggested__TripI__440B1D61" Association="Self.FK__Suggested__TripI__440B1D61">
+      <End Role="Trip" EntitySet="Trip" />
+      <End Role="SuggestedTrips" EntitySet="SuggestedTrips" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transport__Budge__4CA06362" Association="Self.FK__Transport__Budge__4CA06362">
+      <End Role="Budget" EntitySet="Budget" />
+      <End Role="Transportation" EntitySet="Transportation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Transport__DayId__571DF1D5" Association="Self.FK__Transport__DayId__571DF1D5">
+      <End Role="Day" EntitySet="Day" />
+      <End Role="Transportation" EntitySet="Transportation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Trip__CustId__38996AB5" Association="Self.FK__Trip__CustId__38996AB5">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Trip" EntitySet="Trip" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Budget_TripId_Trip" Association="Self.Fk_Budget_TripId_Trip">
+      <End Role="Trip" EntitySet="Trip" />
+      <End Role="Budget" EntitySet="Budget" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

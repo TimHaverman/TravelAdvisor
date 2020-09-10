@@ -1,0 +1,76 @@
+﻿@model IEnumerable<TravelAdvisor.Models.Trip>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section id="main" class="wrapper">
+    <div class="container">
+        <p class="button alt small" style="padding: 0 2.2em; padding-top: 0px; padding-right: 2.2em; padding-bottom: 0px;padding-left: 2.2em;">
+            @Html.ActionLink("Create Trip", "Create")
+        </p>
+        <h2>Trips Index</h2>
+        <table class="alt">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    Type of Trip
+                </th>
+                <th>
+                    End Date
+                </th>
+                
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Suggested)
+                </th>
+
+                <th>
+                    Total Spent
+                </th>
+                <th>
+                    Total Budgeted
+                </th>
+                
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr onclick="window.location.href='@Url.Action("Details", new { id = item.Id })';" style="cursor: pointer">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TypeOfTrip)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompletedDateTime)
+                    </td>                   
+                </tr>
+                <tr onclick="window.location.href='@Url.Action("Details", new { id = item.Id })';" style="cursor: pointer">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Suggested)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.actualTotal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.budgetTotal)
+                    </td>
+                    @*<td>
+                        <ul class="actions">
+                            <li class="button alt small" style="padding: 0 2.2em; padding-top: 0px; padding-right: 3.2em; padding-bottom: 0px;padding-left: 3.2em;">@Html.ActionLink("Edit", "Edit", new { id = item.Id })</li>
+                            <li class="button alt small" style="padding: 0 2.2em; padding-top: 0px; padding-right: 2.2em; padding-bottom: 0px;padding-left: 2.2em;">@Html.ActionLink("Details", "Details", new { id = item.Id })</li>
+                            <li class="button alt small" style="padding: 0 2.2em; padding-top: 0px; padding-right: 2.2em; padding-bottom: 0px;padding-left: 2.2em;">@Html.ActionLink("Delete", "Delete", new { id = item.Id })</li>
+                        </ul>
+                    </td>
+                     *@
+                </tr>
+            }
+
+        </table>
+    </div>
+</section>

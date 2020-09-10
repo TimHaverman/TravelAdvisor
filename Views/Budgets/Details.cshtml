@@ -1,0 +1,48 @@
+﻿@model TravelAdvisor.Models.Budget
+
+@{
+    ViewBag.Title = "Details";
+}
+<section id="main" class="wrapper">
+    <div class="container">
+
+        <div>
+
+
+            <h4>Budget Details For @Html.DisplayFor(model => model.Department.Name)</h4>
+            <hr />
+            <div class="alt">
+                <div>
+                    @Html.LabelFor(model => model.Amount, "Amount")
+                </div>
+
+                <div>
+                    @Html.DisplayFor(model => model.Amount)
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.Trip.Name, "Trip name")
+                </div>
+
+                <div>
+                    @Html.DisplayFor(model => model.Trip.Name)
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.Department.Name, "Department Name")
+                </div>
+
+                <div>
+                    @Html.DisplayFor(model => model.Department.Name)
+                </div>
+
+            </div>
+        </div>
+        <div class="button alt small" style="padding: 0 2.2em; padding-top: 0px; padding-right: 2.2em; padding-bottom: 0px;padding-left: 2.2em;">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+        </div>
+        <div class="button alt small" style="padding: 0 2.2em; padding-top: 0px; padding-right: 2.2em; padding-bottom: 0px;padding-left: 2.2em;">
+            @Html.ActionLink("Back to List", "Details", "Trips", new { id = Model.TripId }, null)
+        </div>
+    </div>
+</section>

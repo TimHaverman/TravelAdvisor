@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4a9f12e7d0c342168734aae71f5519f5" Name="Diagram1" ZoomLevel="52">
+        <EntityTypeShape EntityType="TravelAdvisorModel.C__MigrationHistory" Width="1.5" PointX="0.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TravelAdvisorModel.AspNetRole" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TravelAdvisorModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TravelAdvisorModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TravelAdvisorModel.AspNetUser" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TravelAdvisorModel.Department" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TravelAdvisorModel.FoodOrderLineItem" Width="1.5" PointX="16.5" PointY="10" IsExpanded="true" />
+        <AssociationConnector Association="TravelAdvisorModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="TravelAdvisorModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="TravelAdvisorModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TravelAdvisorModel.Customer" Width="1.5" PointX="5.25" PointY="12" />
+        <AssociationConnector Association="TravelAdvisorModel.FK__Customer__CustId__35BCFE0A" />
+        <EntityTypeShape EntityType="TravelAdvisorModel.Trip" Width="1.5" PointX="7.5" PointY="12.375" />
+        <AssociationConnector Association="TravelAdvisorModel.FK__Trip__CustId__38996AB5" />
+        <AssociationConnector Association="TravelAdvisorModel.SuggestedTrips" />
+        <EntityTypeShape EntityType="TravelAdvisorModel.Budget" Width="1.5" PointX="12" PointY="10.75" />
+        <AssociationConnector Association="TravelAdvisorModel.FK__Budget__Deparmen__3F466844" />
+        <AssociationConnector Association="TravelAdvisorModel.Fk_Budget_TripId_Trip" />
+        <EntityTypeShape EntityType="TravelAdvisorModel.Accommodation" Width="1.5" PointX="14.25" PointY="7.25" />
+        <EntityTypeShape EntityType="TravelAdvisorModel.FoodOrder" Width="1.5" PointX="17.25" PointY="13.375" />
+        <EntityTypeShape EntityType="TravelAdvisorModel.Other" Width="1.5" PointX="14.25" PointY="15.25" />
+        <EntityTypeShape EntityType="TravelAdvisorModel.Transportation" Width="1.5" PointX="14.25" PointY="11.25" />
+        <AssociationConnector Association="TravelAdvisorModel.FK__Accommoda__Budge__4F7CD00D" />
+        <AssociationConnector Association="TravelAdvisorModel.FK__FoodOrder__Budge__46E78A0C" />
+        <AssociationConnector Association="TravelAdvisorModel.FK__Other__BudgetId__52593CB8" />
+        <AssociationConnector Association="TravelAdvisorModel.FK__Transport__Budge__4CA06362" />
+        <AssociationConnector Association="TravelAdvisorModel.FK__FoodOrder__FoodO__49C3F6B7" />
+        <AssociationConnector Association="TravelAdvisorModel.FK__FoodOrder__TripI__5441852A" />
+        <EntityTypeShape EntityType="TravelAdvisorModel.Day" Width="1.5" PointX="9.75" PointY="12.625" />
+        <AssociationConnector Association="TravelAdvisorModel.FK__Accommoda__DayId__5812160E" />
+        <AssociationConnector Association="TravelAdvisorModel.FK__Day__TripID__3C69FB99" />
+        <AssociationConnector Association="TravelAdvisorModel.FK__FoodOrder__DayId__5629CD9C" />
+        <AssociationConnector Association="TravelAdvisorModel.FK__Other__DayId__59063A47" />
+        <AssociationConnector Association="TravelAdvisorModel.FK__Transport__DayId__571DF1D5" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

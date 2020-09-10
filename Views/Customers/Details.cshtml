@@ -1,0 +1,124 @@
+﻿@model TravelAdvisor.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+<section id="main" class="wrapper">
+    <div class="container">
+
+        <div>
+            <h4>Welcome</h4>
+            <hr />
+            <div class="box alt">
+                <div class="row 50% uniform">
+                    <div class="4u"><span class="image fit"><img src="~/images/pic02.jpg" alt="" /></span></div>
+                    <div class="4u"><span class="image fit"><img src="~/images/pic03.jpg" alt="" /></span></div>
+                    <div class="4u$"><span class="image fit"><img src="~/images/pic02.jpg" alt="" /></span></div>
+                </div>
+            </div>
+            <div class="button alt small" style="padding: 0 2.2em; padding-top: 0px; padding-right: 2.2em; padding-bottom: 0px;padding-left: 2.2em;">
+                @Html.ActionLink("Edit", "Edit", "Customers", new { id = Model.CustId }, null)
+            </div>
+            <flex class="alt">
+                <h5>Personal Info</h5>
+                <table style="line-height: 10px">
+                    <tr>
+                        <td style="font-weight: bold">
+                            @Html.LabelFor(model => model.UserName, "Preferred Name")
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.UserName)
+                        </td>
+                        <td style="font-weight: bold">
+                            @Html.LabelFor(model => model.EmailAddress, "Email  Address")
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.EmailAddress)
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td style="font-weight: bold">
+                            @Html.LabelFor(model => model.First_Name, "First Name")
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.First_Name)
+                        </td>
+                        <td style="font-weight: bold">
+                            @Html.LabelFor(model => model.StreetAddress, "Street Address")
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.StreetAddress)
+                        </td>
+                    </tr>
+                    <tr class="flex-item">
+                        <td style="font-weight: bold">
+                            @Html.LabelFor(model => model.LastName, "Last Name")
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.LastName)
+                        </td>
+                        <td style="font-weight: bold">
+                            @Html.DisplayNameFor(model => model.City)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.City)
+                        </td>
+                    </tr>
+                    <tr class="flex-item">
+                        <td style="font-weight: bold">
+                            @Html.LabelFor(model => model.MiddleName, "Middle Name")
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.MiddleName)
+                        </td>
+
+                        <td style="font-weight: bold">
+                            @Html.DisplayNameFor(model => model.State)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.State)
+                        </td>
+                    </tr>
+                    <tr class="flex-item">
+                        <td style="font-weight: bold">
+                            @Html.LabelFor(model => model.PhoneNumber, "Phone Number")
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.PhoneNumber)
+                        </td>
+                        <td style="font-weight: bold">
+                            @Html.DisplayNameFor(model => model.Zipcode)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => model.Zipcode)
+                        </td>
+                </table>
+                <div class="trip-index-partial">
+                    <h4>Completed trips</h4>
+                    @Html.Action("Index", "Trips", new { completedtrips = true })
+                    <h4>Upcoming trips</h4>
+                    @Html.Action("Index", "Trips", new { completedtrips = false })
+                </div>
+
+
+            </flex>
+        </div>
+        <div class="button alt small" style="padding: 0 2.2em; padding-top: 0px; padding-right: 2.2em; padding-bottom: 0px;padding-left: 2.2em;">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.CustId })
+        </div>
+        <div class="button alt small" style="padding: 0 2.2em; padding-top: 0px; padding-right: 2.2em; padding-bottom: 0px;padding-left: 2.2em;">
+            @Html.ActionLink("Back to List", "Index", "Trips")
+        </div>
+    </div>
+</section>

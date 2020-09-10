@@ -1,0 +1,94 @@
+﻿@model TravelAdvisor.Models.Trip
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<section id="main" class="wrapper">
+    <div class="container">
+
+        <h2>Trip Details</h2>
+        <hr />
+        <table class="alt">
+            <tr>
+                <th>Trip Name</th>
+
+                <th>Type of Trip</th>
+
+                <th>Date Completed</th>
+
+                <th>@Html.DisplayNameFor(model => model.Suggested)</th>
+
+                <th>First Name</th>
+            </tr>
+            <tr>
+                <td>@Html.DisplayFor(model => model.Name)</td>
+
+                <td>@Html.DisplayFor(model => model.TypeOfTrip)</td>
+
+                <td>@Html.DisplayFor(model => model.CompletedDateTime)</td>
+
+                <td>@Html.DisplayFor(model => model.Suggested)</td>
+
+                <td>@Html.DisplayFor(model => model.Customer.First_Name)</td>
+            </tr>
+        </table>
+        <section id="two" class="wrapper style2 special">
+            <div class="container">
+                <div class="row 150%">
+                    <div class="6u 12u$(xsmall)">
+                        <div class="image fit captioned">
+                            <img class="apiChart" src="@ViewBag.chart" />
+                            <h3>Daily Breakdown</h3>
+                        </div>
+                    </div>
+                    <div class="6u$ 12u$(xsmall)">
+                        <div class="image fit captioned">
+                            <img class="apiChartTotal" src="@ViewBag.chartTotal" />
+                            <h3>Budget Categories</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="daysContain">
+        @Html.Action("Index", "Days", new { id = Model.Id, asPartial = true })
+    </div>
+    <div class="budgetContain">
+        @Html.Action("Index", "Budgets", new { id = Model.Id, asPartial = true })
+    </div>
+    <div class="foodContain">
+        @Html.Action("Index", "FoodOrders", new { id = Model.Id, asPartial = true })
+    </div>
+    <div class="HotelContain">
+        @Html.Action("Index", "Accommodations", new { id = Model.Id, asPartial = true })
+    </div>
+    <div class="TravelContain">
+        @Html.Action("Index", "Transportations", new { id = Model.Id, asPartial = true })
+    </div>
+    <div class="OtherContain">
+        @Html.Action("Index", "Other", new { id = Model.Id, asPartial = true })
+    </div>
+    <div class="button alt small" style="padding: 0 2.2em; padding-top: 0px; padding-right: 2.2em; padding-bottom: 0px;padding-left: 2.2em;">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+    </div>
+    <div class="button alt small" style="padding: 0 2.2em; padding-top: 0px; padding-right: 2.2em; padding-bottom: 0px;padding-left: 2.2em;">
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+    <div class="button alt small" style="padding: 0 2.2em; padding-top: 0px; padding-right: 2.2em; padding-bottom: 0px;padding-left: 2.2em;">
+        @Html.ActionLink("Add Day", "Create", "Days", new { id = Model.Id }, null)
+    </div>
+    <section id="four" class="wrapper style3 special">
+        <div class="container">
+            <header class="major">
+                <h2>Stay in touch or find some answers</h2>
+                <p>Have an Idea?</p>
+            </header>
+            <ul class="actions">
+                <li><a class="button big" @Html.ActionLink("Contact", "Contact", "Home")</a></li>
+            </ul>
+        </div>
+    </section>
+</section>

@@ -1,0 +1,126 @@
+﻿@model TravelAdvisor.Models.ViewModels.ExpenseVM
+
+@{
+    ViewBag.Title = "CreateExpenseVM";
+}
+<section id="main" class="wrapper">
+    <div class="container">
+
+
+        <div class="container">
+            @using (Html.BeginForm("CreateExpenseVM", "Days", FormMethod.Post, new { id = "CreateExpenseFormVM" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.DayId)
+                @Html.HiddenFor(model => model.TripId)
+
+                <div class="form-horizontal">
+                    <h4>Create an expense For DAy @Html.DisplayFor(model => model.day.DayNumber)</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group Hotel-show Flight-show Food-show Other-show">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group Hotel-show Flight-show Food-show Other-show">
+                        @Html.LabelFor(model => model.BudgetId,"Department Name" ,htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.BudgetId, (SelectList)ViewBag.budgets, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.BudgetId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    
+                    <div class="form-group Hotel-show Flight-show Food-show Other-show">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group Hotel-show Flight-show Food-hide Other-show">
+                        @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group Hotel-hide Flight-hide Food-show Other-hide">
+                        @Html.LabelFor(model => model.CompletedDateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CompletedDateTime, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CompletedDateTime, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group Hotel-hide Flight-hide Food-show Other-hide">
+                        @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Total, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group Hotel-hide Flight-hide Food-show Other-hide">
+                        @Html.LabelFor(model => model.NumberAdults, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.NumberAdults, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NumberAdults, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group Hotel-hide Flight-hide Food-show Other-hide">
+                        @Html.LabelFor(model => model.NumberChildren, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.NumberChildren, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NumberChildren, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group Hotel-show Flight-show Food-show Other-show">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="button alt small" style="padding: 0 2.2em; padding-top: 0px; padding-right: 2.2em; padding-bottom: 0px;padding-left: 2.2em;">
+            @Html.ActionLink("Back to Trip", "Details", "Trips", new { id = Model.TripId }, null)
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        function onSelectionChange() {
+
+            var controllName;
+            var className;
+            var selectedValue = $("#BudgetId option:selected").text();
+            if (selectedValue === "Accommodation") {
+                controllName = "Accommodations";
+                className = "Hotel";
+            }
+            else if (selectedValue === "Transportation") {
+                controllName = "Transportations";
+                className = "Flight";
+            }
+            else if (selectedValue === "FoodOrder") {
+                controllName = "FoodOrders";
+                className = "Food";
+            }
+            else if (selectedValue === "Other") {
+                controllName = "Other";
+                className = "Other";
+            }
+            $("." + className + "-hide").hide();
+            $("." + className + "-show").show();
+            $("#CreateExpenseFormVM").attr("action", "/" + controllName + "/Create");
+        }
+        $(document).ready(() => onSelectionChange());
+        $("#BudgetId").on("change", () => onSelectionChange());
+    </script>
+}
